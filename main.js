@@ -1,20 +1,30 @@
-// toto budeš potřebovat později
-/*
-if (!( panacekX + panacekSirka < minceX || minceX + minceSirka < panacekX || panacekY + panacekVyska < minceY || minceY + minceVyska < panacekY)) {
-	// panacek a mince se prekryvaji
-}
-*/
-
 
 let height = window.innerHeight;
 let width = window.innerWidth;
+
+
+let mince = document.querySelector('#mince');
+let minceX = "0px";
+let minceY = "0px";
+mince.style.left = minceX;
+mince.style.top = minceY;
+
+function presunMinci() {
+  minceX = "0px";
+  minceY = "0px";
+  y = Math.random () * width;
+  z = Math.random () * height;
+  minceX = parseInt(minceX) + y + "px";
+  minceY = parseInt(minceY) + z + "px"; 
+  mince.style.left = minceX;
+  mince.style.top = minceY;
+} 
 
 let souradniceX = "0px";
 let souradniceY = "0px";
 let panacek = document.querySelector('#panacek');
 panacek.style.left = souradniceX;
 panacek.style.top = souradniceY;
-
 
 document.onkeydown = movePanacek;
 
@@ -46,33 +56,36 @@ function moveDown() {
   }
 }
 
-function movePanacek(event) {
-  let x = event.key;
-  if (x === "ArrowRight") {
-    moveRight();
-  } else if (x === "ArrowLeft") {
-    moveLeft();
-  } else if (x === "ArrowUp") {
-    moveUp();
-  } else if (x === "ArrowDown") {
-    moveDown();
-  } else
-    return
-  }
+  let panacekSirka = document.getElementById("panacek").width
+  let panacekVyska = document.getElementById("panacek").height
+  let minceSirka = document.getElementById("mince").width
+  let minceVyska = document.getElementById("mince").height
+
+  function seberMinci () {
+  let pocetBodu = document.getElementsByTagName("div")[0].innerHTML
+  if ((!( parseInt(souradniceX) + panacekSirka < parseInt(minceX) || parseInt(minceX) + minceSirka < parseInt(souradniceX) || parseInt(souradniceY) + panacekVyska < parseInt(minceY) || parseInt(minceY) + minceVyska < parseInt(souradniceY))) && (pocetBodu < 5)) {
+    pocetBodu = parseInt(pocetBodu) + 1;
+    document.getElementsByTagName("div")[0].innerHTML = pocetBodu;
+    presunMinci();
+     } else
+          return
+    }
 
 
-  let mince = document.querySelector('#mince');
-  let MinceX = "0px";
-  let MinceY = "0px";
-  mince.style.left = MinceX;
-  mince.style.top = MinceY;
-
-  function presunMinci() {
-    y = Math.random () * width
-    z = Math.random () * height
-    MinceX = parseInt(MinceX) + y + "px";
-    MinceY = parseInt(MinceY) + z + "px";
-    mince.style.left = MinceX;
-    mince.style.top = MinceY;
-  }
-
+    function movePanacek(event) {
+      let x = event.key;
+      if (x === "ArrowRight") {
+        moveRight();
+        seberMinci();
+      } else if (x === "ArrowLeft") {
+        moveLeft();
+        seberMinci();
+      } else if (x === "ArrowUp") {
+        moveUp();
+        seberMinci();
+      } else if (x === "ArrowDown") {
+        moveDown();
+        seberMinci();
+      } else
+        return
+      }
