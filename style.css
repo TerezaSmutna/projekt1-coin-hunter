@@ -49,3 +49,25 @@ body {
 #panacek {
 	z-index: 1;
 }
+
+#tlacitko-zapnout {
+	position: absolute;
+	left: 700px;
+	top: 0px;
+  font-size: 30px;
+}
+
+#tlacitko-vypnout {
+	position: absolute;
+	left: 0px;
+	top: 800px;
+}
+
+#zprava {
+	font-size: 200px;
+	font-weight: bold;
+  color: violet;
+  position: absolute;
+	left: 600px;
+	top: 250px;
+}

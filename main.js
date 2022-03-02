@@ -30,6 +30,7 @@ document.onkeydown = movePanacek;
 
 function moveRight() {
   if (parseInt(souradniceX) <= width) {
+    panacek.src = 'obrazky/panacek-vpravo.png';
     souradniceX = parseInt(souradniceX) + 5 + "px";
     panacek.style.left = souradniceX;
   }
@@ -37,6 +38,7 @@ function moveRight() {
 
 function moveLeft() {
   if (parseInt(souradniceX) >= 5) {
+    panacek.src = 'obrazky/panacek-vlevo.png';
     souradniceX = (parseInt(souradniceX)) - 5 + "px";
     panacek.style.left = souradniceX;
   }
@@ -44,15 +46,17 @@ function moveLeft() {
 
 function moveUp() { 
   if (parseInt(souradniceY) >= 5) {
-  souradniceY = (parseInt(souradniceY)) - 5 + "px";
-  panacek.style.top = souradniceY;
+    panacek.src = 'obrazky/panacek-nahoru.png';
+    souradniceY = (parseInt(souradniceY)) - 5 + "px";
+    panacek.style.top = souradniceY;
   }
 }
 
 function moveDown() {
   if (parseInt(souradniceY) <= height) {
-  souradniceY = (parseInt(souradniceY)) + 5 + "px";
-  panacek.style.top = souradniceY;
+    panacek.src = 'obrazky/panacek.png';
+    souradniceY = (parseInt(souradniceY)) + 5 + "px";
+    panacek.style.top = souradniceY;
   }
 }
 
@@ -63,14 +67,19 @@ function moveDown() {
 
   function seberMinci () {
   let pocetBodu = document.getElementsByTagName("div")[0].innerHTML
-  if ((!( parseInt(souradniceX) + panacekSirka < parseInt(minceX) || parseInt(minceX) + minceSirka < parseInt(souradniceX) || parseInt(souradniceY) + panacekVyska < parseInt(minceY) || parseInt(minceY) + minceVyska < parseInt(souradniceY))) && (pocetBodu < 5)) {
+  if ((!( parseInt(souradniceX) + panacekSirka < parseInt(minceX) || parseInt(minceX) + minceSirka < parseInt(souradniceX) || parseInt(souradniceY) + panacekVyska < parseInt(minceY) || parseInt(minceY) + minceVyska < parseInt(souradniceY))) && (pocetBodu < 4)) {
     pocetBodu = parseInt(pocetBodu) + 1;
     document.getElementsByTagName("div")[0].innerHTML = pocetBodu;
+    minceHraj();
     presunMinci();
-     } else
-          return
+     } else if ((!( parseInt(souradniceX) + panacekSirka < parseInt(minceX) || parseInt(minceX) + minceSirka < parseInt(souradniceX) || parseInt(souradniceY) + panacekVyska < parseInt(minceY) || parseInt(minceY) + minceVyska < parseInt(souradniceY))) && (pocetBodu <5)) {
+      pocetBodu = parseInt(pocetBodu) + 1;
+      document.getElementsByTagName("div")[0].innerHTML = pocetBodu;
+      pauseAudio();
+      zahrajFanfaru();
+      hlaska.textContent = 'Jsi vítěz!';
+     } else return
     }
-
 
     function movePanacek(event) {
       let x = event.key;
@@ -84,8 +93,31 @@ function moveDown() {
         moveUp();
         seberMinci();
       } else if (x === "ArrowDown") {
-        moveDown();
+        moveDown(); 
         seberMinci();
       } else
-        return
+        return 
+    }
+      
+      let doprovodnaHudba = document.getElementById("hudba"); 
+      function playAudio() { 
+        doprovodnaHudba.play(); 
+      } 
+
+      function pauseAudio() { 
+        doprovodnaHudba.pause(); 
+      } 
+
+      let zvukMince = document.getElementById("zvukmince"); 
+      function minceHraj() { 
+        zvukMince.play(); 
       }
+
+      let fanfara = document.getElementById("zvukfanfara"); 
+      function zahrajFanfaru() { 
+        fanfara.play(); 
+      }
+
+      let hlaska = document.getElementById("zprava");
+
+      

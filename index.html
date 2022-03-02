@@ -9,25 +9,35 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
+<style>
+  body  {
+    background-image: url('obrazky/pozadi/weather.png');
+  }
+  </style>
+
 <body
 
   onload="presunMinci()">
 
 	<img id="panacek" src="obrazky/panacek.png" alt="Panáček" onkeydown="movePanacek(event)">
+  <img id="panacek" src="obrazky/panacek-vpravo.png" alt="Panáček">
+  <img id="panacek" src="obrazky/panacek-vlevo.png" alt="Panáček">
+  <img id="panacek" src="obrazky/panacek-nahoru.png" alt="Panáček">
 
   <img id="mince" src="obrazky/mince.png" alt="Mince">
 
   <div id="score">0</div>
 
+  <p id="zprava"></p>
 
-  <!--
-	<audio id="hudba" src="zvuky/hudba.mp3" autoplay loop></audio>
 
-	<audio id="zvukmince" src="zvuky/mince.mp3"></audio>
+  <audio id="hudba" src="zvuky/hudba.mp3" autoplay loop></audio>
+  <audio id="zvukmince" src="zvuky/mince.mp3"></audio>
+  <audio id="zvukfanfara" src="zvuky/fanfara.mp3"></audio>
 
-	<audio id="zvukfanfara" src="zvuky/fanfara.mp3"></audio>
-	-->
+  <button onclick="playAudio()" id="tlacitko-zapnout" type="button">Click to start the game</button>
+<!--<button onclick="pauseAudio()" id="tlacitko-vypnout" type="button">Vypni zvuk</button>-->
 
-	<script src="main.js"></script>
+	<script src="main.js"></script> 
 </body>
 </html>
