@@ -86,15 +86,19 @@ function moveDown() {
       if (x === "ArrowRight") {
         moveRight();
         seberMinci();
+        playAudio();
       } else if (x === "ArrowLeft") {
         moveLeft();
         seberMinci();
+        playAudio();
       } else if (x === "ArrowUp") {
         moveUp();
         seberMinci();
+        playAudio();
       } else if (x === "ArrowDown") {
         moveDown(); 
         seberMinci();
+        playAudio();
       } else
         return 
     }
