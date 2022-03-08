@@ -26,7 +26,6 @@ let panacek = document.querySelector('#panacek');
 panacek.style.left = souradniceX;
 panacek.style.top = souradniceY;
 
-document.onkeydown = movePanacek;
 
 function moveRight() {
   if (parseInt(souradniceX) <= width) {
@@ -78,8 +77,11 @@ function moveDown() {
       pauseAudio();
       zahrajFanfaru();
       hlaska.textContent = 'Jsi vítěz!';
-     } else return
+     } else 
+        return;
     }
+
+    document.onkeydown = movePanacek;
 
     function movePanacek(event) {
       playAudio();
@@ -121,4 +123,10 @@ function moveDown() {
 
       let hlaska = document.getElementById("zprava");
 
-      
+      /*let hra = seberMinci()
+      if (hra = true) {
+        playAudio();
+      } else {
+        pauseAudio();
+        movePanacek.stopPropagation();
+       }*/
