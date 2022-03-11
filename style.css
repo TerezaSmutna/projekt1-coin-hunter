@@ -71,3 +71,12 @@ body {
 	left: 600px;
 	top: 250px;
 }
+
+#zpravaNaKonci {
+	font-size: 100px;
+	font-weight: bold;
+  color: lightgreen;
+  position: absolute;
+	left: 600px;
+	top: 250px;
+}
